@@ -1,0 +1,415 @@
+</html>
+<!DOCTYPE html> 
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PsyClinic Trainer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Tajawal', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #000000 0%, #d4af37 100%);
+            text-align: center;
+            color: #ffffff;
+            position: relative;
+            overflow: hidden;
+        }
+        body::before {
+            content: "Ψ";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 300px;
+            font-weight: bold;
+            color: rgba(212, 175, 55, 0.1);
+            z-index: -1;
+            pointer-events: none;
+        }
+        .header {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #d4af37;
+            padding: 20px;
+            font-size: 26px;
+            font-weight: bold;
+            position: relative;
+            z-index: 1;
+        }
+        .menu {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 15px;
+            border-bottom: 3px solid #d4af37;
+            position: relative;
+            z-index: 1;
+        }
+        .menu a {
+            color: #d4af37;
+            text-decoration: none;
+            padding: 12px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+        .menu a:hover {
+            background-color: #d4af37;
+            color: #000000;
+        }
+        .container {
+            padding: 30px;
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 1.8;
+        }
+        .container h2 {
+            margin-bottom: 20px;
+            color: #d4af37;
+            font-size: 32px;
+        }
+        .container p {
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: 400;
+        }
+        .feature {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 25px;
+            margin: 20px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            color: #2c3e50;
+        }
+        .footer {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #d4af37;
+            padding: 12px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 1;
+        }
+        .forum-container, .consultation-container {
+            text-align: left;
+            max-width: 800px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            color: #2c3e50;
+        }
+        .forum-post, .psychologist {
+            border-bottom: 1px solid #ddd;
+            padding: 12px;
+        }
+        .forum-input, .consultation-input {
+            width: 100%;
+            padding: 12px;
+            margin-top: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+        .forum-button, .consultation-button {
+            margin-top: 12px;
+            padding: 12px;
+            background-color: #d4af37;
+            color: #000000;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .forum-button:hover, .consultation-button:hover {
+            background-color: #b8860b;
+        }
+        .back-button {
+            margin-top: 20px;
+            padding: 12px;
+            background-color: #8b0000;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .back-button:hover {
+            background-color: #6b0000;
+        }
+    </style>
+	<style>
+    /* هنا توجد قواعد CSS الحالية */
+
+    /* أضف هذا الكود الجديد هنا */
+    .consultation-container form {
+        margin-top: 20px;
+    }
+
+    .consultation-container input {
+        width: 100%;
+        padding: 12px;
+        margin-top: 12px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+    }
+
+    .consultation-container button[type="submit"] {
+        margin-top: 12px;
+        padding: 12px;
+        background-color: #d4af37;
+        color: #000000;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .consultation-container button[type="submit"]:hover {
+        background-color: #b8860b;
+    }
+</style>
+</head>
+<body>
+    <div class="header">PsyClinic Trainer</div>
+    <div class="menu">
+        <a onclick="showHome()">🏠 Ana Sayfa</a>
+        <a href="https://dergipark.org.tr" target="_blank">📋 Tanı Vakaları</a>
+        <a href="https://aysetolga.com" target="_blank">🧠 Terapi Teknikleri</a>
+        <a href="https://psikolog.org.tr/" target="_blank">📊 Değerlendirme Araçları</a>
+        <a onclick="showForum()">💬 Forum</a>
+        <a onclick="showTraining()">🎓 Pratik Eğitim</a>
+        <a onclick="showConsultation()">👨‍⚕️ Psikolog Danışmanlığı</a>
+    </div>
+    <div class="container" id="content">
+        <h2>🏠 Ana Sayfa</h2>
+        <p>
+            <strong>PsyClinic Trainer</strong>, klinik psikoloji öğrencilerine kapsamlı bir eğitim deneyimi sunmayı amaçlayan özel bir eğitim platformudur. Site, tanı, psikolojik değerlendirme ve terapötik iletişim becerilerini geliştirmek için etkileşimli bir ortam aracılığıyla çeşitli araçlar ve kaynaklar sunar.
+        </p>
+        <p>
+            <strong>PsyClinic Trainer</strong>, klinik psikoloji öğrencileri için sanal bir laboratuvar olarak tasarlanmıştır. Güvenilir bilimsel kaynaklarla entegrasyonu ve dinamik özellikleri sayesinde, psikoloji alanında eğitim ve pratik için değerli bir katkı sağlar.
+        </p>
+    </div>
+    <div class="footer">Tüm hakları saklıdır &copy; Aramis Yasmine</div>
+
+    <script>
+        function showForum() {
+            document.getElementById('content').innerHTML = `
+                <div class="forum-container">
+                    <h2>💬 Forum</h2>
+                    <div id="forum-posts">
+                        <p>💡 Sorularınızı veya görüşlerinizi foruma yazın!</p>
+                    </div>
+                    <textarea id="forum-input" class="forum-input" placeholder="Sorunuzu veya yorumunuzu buraya yazın..."></textarea>
+                    <button class="forum-button" onclick="addForumPost()">Gönder</button>
+                    <button class="back-button" onclick="showHome()">Geri Dön</button>
+                </div>
+            `;
+        }
+
+        function addForumPost() {
+            let inputField = document.getElementById('forum-input');
+            let postText = inputField.value.trim();
+            if (postText) {
+                let forumPosts = document.getElementById('forum-posts');
+                let newPost = document.createElement('div');
+                newPost.classList.add('forum-post');
+                newPost.innerHTML = `<strong>Kullanıcı:</strong> ${postText}`;
+                forumPosts.appendChild(newPost);
+                inputField.value = "";
+            }
+        }
+
+        function showHome() {
+            document.getElementById('content').innerHTML = `
+                <h2>🏠 Ana Sayfa</h2>
+                <p>
+                    <strong>PsyClinic Trainer</strong>, klinik psikoloji öğrencilerine kapsamlı bir eğitim deneyimi sunmayı amaçlayan özel bir eğitim platformudur. Site, tanı, psikolojik değerlendirme ve terapötik iletişim becerilerini geliştirmek için etkileşimli bir ortam aracılığıyla çeşitli araçlar ve kaynaklar sunar.
+                </p>
+                <p>
+                    <strong>PsyClinic Trainer</strong>, klinik psikoloji öğrencileri için sanal bir laboratuvar olarak tasarlanmıştır. Güvenilir bilimsel kaynaklarla entegrasyonu ve dinamik özellikleri sayesinde, psikoloji alanında eğitim ve pratik için değerli bir katkı sağlar.
+                </p>
+            `;
+        }
+
+        function showTraining() {
+            document.getElementById('content').innerHTML = `
+                <h2>🎓 Pratik Eğitim</h2>
+                <p id="case-symptoms">${cases[currentCase].symptoms}</p>
+                <input type="text" id="user-diagnosis" class="forum-input" placeholder="Teşhisinizi girin...">
+                <button class="forum-button" onclick="checkDiagnosis()">Kontrol Et</button>
+                <p id="result"></p>
+                <button class="back-button" onclick="showHome()">Geri Dön</button>
+            `;
+        }
+
+        function showConsultation() {
+            document.getElementById('content').innerHTML = `
+                <div class="consultation-container">
+                    <h2>👨‍⚕️ Psikolog Danışmanlığı</h2>
+                    <p>İhtiyacınız olan psikolojik desteği almak için aşağıdaki psikologlardan birini seçin veya kendinizi kaydedin:</p>
+                    <div id="psychologists-list">
+                        <!-- قائمة الأخصائيين النفسانيين -->
+                    </div>
+                    <h3>Uzman Kayıt Formu</h3>
+                    <form id="expert-registration-form">
+                        <input type="text" id="expert-name" class="consultation-input" placeholder="Adınız ve Soyadınız" required>
+                        <input type="text" id="expert-specialty" class="consultation-input" placeholder="Uzmanlık Alanınız" required>
+                        <input type="email" id="expert-email" class="consultation-input" placeholder="E-posta Adresiniz" required>
+                        <button type="submit" class="consultation-button">Kayıt Ol</button>
+                    </form>
+                    <button class="back-button" onclick="showHome()">Geri Dön</button>
+                </div>
+            `;
+            loadPsychologists();
+
+            // Form submission handler
+            document.getElementById('expert-registration-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                registerExpert();
+            });
+        }
+
+        function registerExpert() {
+            let expertName = document.getElementById('expert-name').value.trim();
+            let expertSpecialty = document.getElementById('expert-specialty').value.trim();
+            let expertEmail = document.getElementById('expert-email').value.trim();
+
+            if (expertName && expertSpecialty && expertEmail) {
+                alert("Kaydınız başarıyla alındı! Teşekkür ederiz.");
+                // Formu temizle
+                document.getElementById('expert-registration-form').reset();
+            } else {
+                alert("Lütfen tüm alanları doldurun.");
+            }
+        }
+
+        function loadPsychologists() {
+            // يمكنك استبدال هذا الجزء بطلب AJAX لتحميل قائمة الأخصائيين من قاعدة البيانات
+            let psychologists = [
+                { name: "Dr. Ahmet Yılmaz", specialty: "Depresyon ve Anksiyete", contact: "ahmet.yilmaz@example.com" },
+                { name: "Dr. Ayşe Kaya", specialty: "Çocuk ve Ergen Psikolojisi", contact: "ayse.kaya@example.com" },
+                { name: "Dr. Mehmet Demir", specialty: "Aile Terapisi", contact: "mehmet.demir@example.com" }
+            ];
+
+            let psychologistsList = document.getElementById('psychologists-list');
+            psychologistsList.innerHTML = "";
+
+            psychologists.forEach(psychologist => {
+                let psychologistDiv = document.createElement('div');
+                psychologistDiv.classList.add('psychologist');
+                psychologistDiv.innerHTML = `
+                    <h3>${psychologist.name}</h3>
+                    <p><strong>Uzmanlık:</strong> ${psychologist.specialty}</p>
+                    <p><strong>İletişim:</strong> <a href="mailto:${psychologist.contact}">${psychologist.contact}</a></p>
+                `;
+                psychologistsList.appendChild(psychologistDiv);
+            });
+        }
+
+        let cases = [
+            // Mevcut vakalar (1-20)
+            { symptoms: "Hasta, iki haftadan uzun süredir devam eden sürekli üzüntü, ilgi kaybı ve uyku bozuklukları yaşıyor.", diagnosis: "Depresyon" },
+            { symptoms: "Hasta, aniden gelen yoğun korku nöbetleri, terleme ve nedensiz kalp çarpıntısı yaşıyor.", diagnosis: "Panik Bozukluğu" },
+            { symptoms: "Hasta, günlük yaşam hakkında aşırı ve sürekli endişe duyuyor ve bu endişeyi kontrol etmekte zorlanıyor.", diagnosis: "Yaygın Anksiyete Bozukluğu" },
+            { symptoms: "Hasta, aşırı aktivite ve özgüven dönemleri ile şiddetli depresyon dönemleri arasında duygusal dalgalanmalar yaşıyor.", diagnosis: "Bipolar Bozukluk" },
+            { symptoms: "Kişi, sosyal durumlardan aşırı ve nedensiz korku duyuyor ve bu durumlardan kaçınıyor.", diagnosis: "Sosyal Fobi" },
+            { symptoms: "Hasta, gerçekte olmayan sesler duyuyor ve takip edildiği gibi gerçek dışı inançlara sahip.", diagnosis: "Şizofreni" },
+            { symptoms: "Çocuk, aşırı hareketlilik, dikkat eksikliği ve talimatları takip etmekte zorlanıyor.", diagnosis: "Dikkat Eksikliği Hiperaktivite Bozukluğu (DEHB)" },
+            { symptoms: "Hasta, mikroplardan aşırı korkuyor ve ellerini sürekli yıkıyor.", diagnosis: "Obsesif-Kompulsif Bozukluk (OKB)" },
+            { symptoms: "Travmatik bir olaydan sonra kişi, kabuslar, olayı tekrar yaşama ve benzer durumlardan kaçınma yaşıyor.", diagnosis: "Travma Sonrası Stres Bozukluğu (TSSB)" },
+            { symptoms: "Kişi, başkalarına karşı duygusal dalgalanmalar, terk edilme korkusu ve dürtüsel davranışlar sergiliyor.", diagnosis: "Borderline Kişilik Bozukluğu" },
+            { symptoms: "Hasta, tekrarlayan aşırı yeme nöbetleri ve sonrasında suçluluk duygusu yaşıyor.", diagnosis: "Tıkınırcasına Yeme Bozukluğu" },
+            { symptoms: "Kişi, özellikle kış aylarında üzüntü hissi yaşıyor.", diagnosis: "Mevsimsel Depresyon" },
+            { symptoms: "Hasta, sürekli gergin, her şeyi planlı ve düzensizlikten rahatsız oluyor.", diagnosis: "Obsesif-Kompulsif Kişilik Bozukluğu" },
+            { symptoms: "Kişi, başkalarının niyetlerinden sürekli şüphe duyuyor ve herkesin onu kandırmaya çalıştığını düşünüyor.", diagnosis: "Paranoid Kişilik Bozukluğu" },
+            { symptoms: "Hasta, gerçeklikten kopmuş gibi hissediyor ve kendini dışarıdan izliyormuş gibi davranıyor.", diagnosis: "Depersonalizasyon Bozukluğu" },
+            { symptoms: "Hasta, nedensiz tekrarlayan kelimeler veya hareketler yapıyor ve sosyal etkileşimde zorlanıyor.", diagnosis: "Otizm Spektrum Bozukluğu" },
+            { symptoms: "Kişi, aşırı uyku hali ve yeterli uyku almasına rağmen sürekli yorgunluk hissediyor.", diagnosis: "Narkolepsi" },
+            { symptoms: "Hasta, hızlı ve çok konuşuyor, hızlı düşüncelere sahip ve uykuya ihtiyaç duymadığını hissediyor.", diagnosis: "Mani" },
+            { symptoms: "Kişi, aşırı kilo kaybı, kilo alma korkusu ve aşırı diyet davranışları sergiliyor.", diagnosis: "Anoreksiya Nervoza" },
+            { symptoms: "Hasta, sürekli olarak izlendiği veya komplo kurulduğu hissine kapılıyor.", diagnosis: "Sanrısal Bozukluk" },
+
+            // Yeni vakalar (21-50)
+            { symptoms: "Hasta, nedensiz ve öngörülemeyen şiddetli öfke nöbetleri yaşıyor.", diagnosis: "Aralıklı Patlayıcı Bozukluk" },
+            { symptoms: "Hasta, uykuya dalmakta veya uykuyu sürdürmekte zorlanıyor ve bu durum günlük aktivitelerini etkiliyor.", diagnosis: "Uykusuzluk" },
+            { symptoms: "Hasta, tekrarlayan ağlama nöbetleri, umutsuzluk hissi ve günlük aktivitelere ilgi kaybı yaşıyor.", diagnosis: "Majör Depresyon" },
+            { symptoms: "Hasta, hafıza sorunları, zihinsel bulanıklık ve uzun süreli konsantrasyon zorluğu yaşıyor.", diagnosis: "Bilişsel Bozukluk" },
+            { symptoms: "Hasta, kapalı veya kalabalık yerlerden aşırı korku duyuyor ve bu yerlerden kaçınıyor.", diagnosis: "Agorafobi" },
+            { symptoms: "Hasta, hırsızlık veya yangın çıkarma gibi dürtüsel davranışları kontrol etmekte zorlanıyor.", diagnosis: "Dürtü Kontrol Bozukluğu" },
+            { symptoms: "Hasta, yaşam değişikliklerine uyum sağlamakta zorlanıyor ve sürekli endişe hissediyor.", diagnosis: "Uyum Bozukluğu" },
+            { symptoms: "Hasta, duygularını ifade etmekte zorlanıyor ve sosyal izolasyon eğilimi gösteriyor.", diagnosis: "Şizoid Kişilik Bozukluğu" },
+            { symptoms: "Hasta, tekrarlayan kabuslar nedeniyle uykuya dalmakta zorlanıyor.", diagnosis: "Kabus Bozukluğu" },
+            { symptoms: "Hasta, aşırı yeme nöbetleri ve ardından yediklerini çıkarma davranışı sergiliyor.", diagnosis: "Bulimia Nervoza" },
+            { symptoms: "Hasta, akıcı konuşmakta zorlanıyor ve kelimeleri tekrarlıyor veya aniden duraklıyor.", diagnosis: "Kekemelik" },
+            { symptoms: "Hasta, normal zekasına rağmen öğrenme veya okumada zorluk yaşıyor.", diagnosis: "Disleksi" },
+            { symptoms: "Hasta, tanıdık yüzleri tanımakta zorlanıyor.", diagnosis: "Prosopagnozi" },
+            { symptoms: "Hasta, belirli bir kaza veya travma sonrası hafıza kaybı yaşıyor.", diagnosis: "Dissosiyatif Amnezi" },
+            { symptoms: "Hasta, vücut hareketlerini kontrol etmekte zorlanıyor ve istemsiz titremeler yaşıyor.", diagnosis: "Hareket Bozukluğu" },
+            { symptoms: "Hasta, gece boyunca bacaklarında tekrarlayan hareketler nedeniyle uykuya dalmakta zorlanıyor.", diagnosis: "Huzursuz Bacak Sendromu" },
+            { symptoms: "Hasta, beyin hasarı sonrası konuşma veya konuşulanları anlamakta zorlanıyor.", diagnosis: "Afazi" },
+            { symptoms: "Hasta, kısa süreli hafıza sorunları yaşıyor ve yakın zamandaki olayları unutuyor.", diagnosis: "Kısa Süreli Hafıza Kaybı" }
+        ];
+        let currentCase = 0;
+
+        function checkDiagnosis() {
+            let userAnswer = document.getElementById('user-diagnosis').value.trim();
+            let resultText = document.getElementById('result');
+
+            if (userAnswer === cases[currentCase].diagnosis) {
+                resultText.innerHTML = "✅ Doğru cevap!";
+            } else {
+                resultText.innerHTML = `❌ Yanlış cevap. Doğru teşhis: <strong>${cases[currentCase].diagnosis}</strong>`;
+            }
+
+            setTimeout(nextCase, 3000); // Otomatik olarak sonraki vaka
+        }
+
+        function nextCase() {
+            currentCase++;
+            if (currentCase < cases.length) {
+                showTraining(); // Sonraki vakayı göster
+            } else {
+                document.getElementById('content').innerHTML = `
+                    <h2>🎓 Pratik Eğitim</h2>
+                    <p>🎉 Tüm vakaları tamamladınız! Harika iş çıkardınız!</p>
+                    <button class="back-button" onclick="showHome()">Geri Dön</button>
+                `;
+            }
+        }
+		function displayForumPosts() {
+    let forumPostsDiv = document.getElementById('forum-posts');
+    forumPostsDiv.innerHTML = "<p>💡 Sorularınızı veya görüşlerinizi foruma yazın!</p>";
+    forumPosts.forEach(post => {
+        let newPost = document.createElement('div');
+        newPost.classList.add('forum-post');
+        newPost.innerHTML = `<strong>Kullanıcı:</strong> ${post.text}`;
+        forumPostsDiv.appendChild(newPost);
+    });
+}
+function loadPsychologists() {
+    let psychologistsList = document.getElementById('psychologists-list');
+    psychologistsList.innerHTML = "";
+    psychologists.forEach(psychologist => {
+        let psychologistDiv = document.createElement('div');
+        psychologistDiv.classList.add('psychologist');
+        psychologistDiv.innerHTML = `
+            <h3>${psychologist.name}</h3>
+            <p><strong>Uzmanlık:</strong> ${psychologist.specialty}</p>
+            <p><strong>İletişim:</strong> <a href="mailto:${psychologist.contact}">${psychologist.contact}</a></p>
+        `;
+        psychologistsList.appendChild(psychologistDiv);
+    });
+}
+    </script>
+</body>
+</html>
